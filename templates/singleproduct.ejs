@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website</title>
+    <script src="https://kit.fontawesome.com/58324da162.js" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" href="/style1.css">
+</head>
+<body>
+    
+    <%- include("../partials/nav.ejs") %>
+
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-img">
+            <!-- <img src="<%= singleproduct.image %>" id="MainImg" width="100%"/> -->
+            <img src="/products/n<%=singleproduct.available%>.jpg" id="MainImg" width="100%"/>
+            <div class="small-img-grp">
+                <div class="small-img-col">
+                    <img src="/products/n<%=singleproduct.available%>.jpg" width="100%" class="small-img"/>
+                </div>
+                <div class="small-img-col">
+                    <img src="/products/n5.jpg" width="100%" class="small-img"/>
+                </div>
+                <div class="small-img-col">
+                    <img src="/products/n7.jpg" width="100%" class="small-img"/>
+                </div>
+                <div class="small-img-col">
+                    <img src="/products/n8.jpg" width="100%" class="small-img"/>
+                </div>
+            </div>
+        </div>
+        <div class="single-product-details">
+            <h4 name="prodes"><%= singleproduct.short_description %></h4>
+            <h6 name="proname"><%= singleproduct.name %></h6>
+            <h2 name="price"><%= singleproduct.price %></h2>
+            <select>
+                <option>Select size</option>
+                <option>Small</option>
+                <option>Large</option>
+                <option>Medium</option>
+                <option>XL</option>
+                <option>XXL</option>
+            </select>
+            <input type="number" value="1" name="quantity"/>
+            <button class="normal" onclick="addProduct('<%= encodeURIComponent(singleproduct.name) %>')">Add To Cart</button>
+            <h4>Product Details</h4>
+            <span><%= singleproduct.long_description %></span>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>New Arrivals</h2>
+        <p>Summer Collection New Morden Design</p>
+        <div class="pro-container">
+            <% product.forEach((product) => { %>
+                <div class="pro">
+                    <img src="<%= product.image %>"/> 
+                    <div class="description">
+                        <span><%= product.short_description %></span>
+                        <h5><%= product.name %></h5>
+                        <div class="star">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h4><%= product.price %></h4>
+                    </div>
+                    <%- include("../partials/addToCart.ejs") %>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+
+    <section id="news-letter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your email address"/>
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <%- include("../partials/footer.ejs") %>
+
+
+    <script>
+        const MainImg = document.getElementById("MainImg")
+        const SmallImg = document.getElementsByClassName("small-img")
+
+        // SmallImg[0].onclick = function(){
+        //     MainImg.src = SmallImg[0].src
+        // }
+        // SmallImg[1].onclick = function(){
+        //     MainImg.src = SmallImg[1].src
+        // }
+        // SmallImg[2].onclick = function(){
+        //     MainImg.src = SmallImg[2].src
+        // }
+        // SmallImg[3].onclick = function(){
+        //     MainImg.src = SmallImg[3].src
+        // }
+        SmallImg[0].onclick = function() {
+            ChangeImage(0);
+        };
+        SmallImg[1].onclick = function() {
+            ChangeImage(1);
+        };
+
+        SmallImg[2].onclick = function() {
+            ChangeImage(2);
+        };
+        SmallImg[3].onclick = function() {
+            ChangeImage(3);
+        };
+
+        function ChangeImage(x){
+            MainImg.src=SmallImg[x].src;
+        }
+    </script>
+    <script src="/script.js"></script>
+</body>
+</html>

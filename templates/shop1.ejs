@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website</title>
+    <script src="https://kit.fontawesome.com/58324da162.js" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" href="/style1.css">
+
+</head>
+<body>
+    
+    <section id="header">
+
+        <div class="left">
+            <a href="#"><img src="/logo.png" class="logo"alt="logo"/></a>
+        </div>
+        <div>
+            <ul id="navbar">
+                <li><a href="/home1" class="active">Home</a></li>
+                <li><a href="/shop1" >Shop</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/login"  >LogIn</a></li>
+                <li><a href="/cart" id="cart-bag"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div class="mobile">
+            <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </div>
+    </section>
+
+    <section id="page-header">
+        <h2>#stayhome</h2>
+        <p>Save more with coupons & up to 70% off!</p>
+    </section>
+    
+    <section id="product1" class="section-p1">
+        <div class="pro-container">
+            <% productstatic.forEach((product) => { %>
+
+            <div class="pro" onclick="window.location.href='/singleproduct'">
+                <img src="<%= product.image %>"/>
+                <div class="description">
+                    <span><%= product.short_description %></span>
+                    <h5><%= product.name %></h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4><%= product.price %></h4>
+                </div>
+                
+            </div>
+            <% }); %>
+        </div>
+    </section>
+
+    <section id="pagination" class="section-p1">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
+    </section>
+
+    <section id="news-letter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your email address"/>
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <%- include("../partials/footer.ejs") %>
+
+
+    <script src="/script.js"></script>
+</body>
+</html>
